@@ -1,4 +1,4 @@
-namespace: middleware_automation
+namespace: infra
 name: ocpv_lab
 version: "1.0.0"
 readme: README.md
