@@ -1,3 +1,5 @@
+[![CI](https://github.com/redhat-cop/ocpv_lab/actions/workflows/ci.yml/badge.svg?event=status)](https://github.com/redhat-cop/ocpv_lab/actions/workflows/ci.yml) [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8292/badge)](https://www.bestpractices.dev/en/projects/8292)
+
 # Ansible Middleware OpenShift Virtualization Lab
 
 Using OpenShift Virtualization as an environment for hosting Virtual Machines that are provisioned, configured and maintained using Ansible and tooling from the Ansible Middleware project.
