@@ -26,13 +26,13 @@ Dependencies
 Example Playbook
 ----------------
 
-Please follow [install_ocpv.yml](https://github.com/ansible-middleware/ocpv_lab/blob/main/playbooks/install_ocpv.yml)
+Please follow [install_ocpv.yml](https://github.com/redhat-cop/middleware_ocpv/blob/main/playbooks/install_ocpv.yml)
 for better understanding.
 
 License
 -------
 
-[Apache License Version 2.0](https://github.com/ansible-middleware/ocpv_lab/blob/main/LICENSE)
+[Apache License Version 2.0](https://github.com/redhat-cop/middleware_ocpv/blob/main/LICENSE)
 
 Author Information
 ------------------

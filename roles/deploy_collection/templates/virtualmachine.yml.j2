@@ -2,18 +2,18 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   labels:
-    app: {{ lab_name }}
+    app: {{ collection_name }}
     vm.kubevirt.io/template: rhel9-server-small
     vm.kubevirt.io/template.revision: "1"
     vm.kubevirt.io/template.version: v0.19.6
-  name: {{ lab_name }}
-  namespace: {{ lab_namespace }}
+  name: {{ collection_name }}
+  namespace: {{ collection_namespace }}
 spec:
   dataVolumeTemplates:
   - apiVersion: cdi.kubevirt.io/v1beta1
     kind: DataVolume
     metadata:
-      name: {{ lab_name }}
+      name: {{ collection_name }}
     spec:
       sourceRef:
         kind: DataSource
@@ -31,7 +31,7 @@ spec:
         vm.kubevirt.io/os: rhel9
         vm.kubevirt.io/workload: server
       labels:
-        kubevirt.io/domain: {{ lab_name }}
+        kubevirt.io/domain: {{ collection_name }}
         kubevirt.io/size: small
     spec:
       domain:
@@ -43,7 +43,7 @@ spec:
           disks:
           - disk:
               bus: virtio
-            name: {{ lab_name }}
+            name: {{ collection_name }}
           - disk:
               bus: virtio
             name: cloudinitdisk
@@ -70,8 +70,8 @@ spec:
       terminationGracePeriodSeconds: 180
       volumes:
       - dataVolume:
-          name: {{ lab_name }}
-        name: {{ lab_name }}
+          name: {{ collection_name }}
+        name: {{ collection_name }}
       - cloudInitNoCloud:
           secretRef:
             name: {{ cloud_init_secret }}

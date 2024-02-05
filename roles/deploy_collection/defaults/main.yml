@@ -1,8 +1,8 @@
 ---
-# defaults file for deploy_lab
+# defaults file for deploy_collection
 
-lab_namespace: ansible-middleware-ocpv
-lab_name: eap-lab
+collection_namespace: ansible-middleware-ocpv
+collection_name: eap-collection
 vm_cpus_cores: 2
 vm_cpus_sockets: 1
 vm_cpus_threads: 1
@@ -11,7 +11,7 @@ vm_storage_requests: 50Gi
 vm_memory_requests: 8Gi
 vm_datasource_name: rhel9
 vm_datasource_namespace: openshift-virtualization-os-images
-deploy_lab_vm_ssh_public_key: ""
+deploy_collection_vm_ssh_public_key: ""
 cloud_init_secret: cloud-init
 
 eap_product_version: 7.4

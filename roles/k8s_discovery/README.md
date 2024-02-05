@@ -22,13 +22,13 @@ Dependencies
 Example Playbook
 ----------------
 
-Please follow [k8s_discovery.yml](https://github.com/ansible-middleware/ocpv_lab/blob/main/playbooks/k8s_discovery.yaml)
+Please follow [k8s_discovery.yml](https://github.com/redhat-cop/middleware_ocpv/blob/main/playbooks/k8s_discovery.yaml)
 for better understanding.
 
 License
 -------
 
-[Apache License Version 2.0](https://github.com/ansible-middleware/ocpv_lab/blob/main/LICENSE)
+[Apache License Version 2.0](https://github.com/redhat-cop/middleware_ocpv/blob/main/LICENSE)
 
 
 Author Information

@@ -1,31 +1,31 @@
 ---
 
-- name: "Create Namespace {{ lab_namespace }}"
+- name: "Create Namespace {{ collection_namespace }}"
   kubernetes.core.k8s:
     state: present
     template: namespace.yml.j2
 
 - name: Set VM SSH Public Key When Credential Provided
   ansible.builtin.set_fact:
-    deploy_lab_vm_ssh_public_key: "{{ ssh_public_key }}"
+    deploy_collection_vm_ssh_public_key: "{{ ssh_public_key }}"
   when: ssh_public_key is defined and ssh_public_key|length > 0
 
 - name: Verify SSH public key is available
   ansible.builtin.assert:
     that:
-      - deploy_lab_vm_ssh_public_key is defined
-      - deploy_lab_vm_ssh_public_key | length > 0
-    fail_msg: "'deploy_lab_vm_ssh_public_key' is not defined"
+      - deploy_collection_vm_ssh_public_key is defined
+      - deploy_collection_vm_ssh_public_key | length > 0
+    fail_msg: "'deploy_collection_vm_ssh_public_key' is not defined"
     quiet: true
 
 
 - name: Set cloud-init fact
   ansible.builtin.set_fact:
-    deploy_lab_cloud_init_content: |
+    deploy_collection_cloud_init_content: |
       #cloud-config
       user: cloud-user
       ssh_authorized_keys:
-        - {{ deploy_lab_vm_ssh_public_key }}
+        - {{ deploy_collection_vm_ssh_public_key }}
 
 - name: Create cloud-init Secret
   kubernetes.core.k8s:
@@ -36,9 +36,9 @@
       type: Generic
       metadata:
         name: "{{ cloud_init_secret }}"
-        namespace: "{{ lab_namespace }}"
+        namespace: "{{ collection_namespace }}"
       data:
-        userdata: "{{ deploy_lab_cloud_init_content | b64encode }}"
+        userdata: "{{ deploy_collection_cloud_init_content | b64encode }}"
 
 - name: "Create VirtualMachine"
   kubernetes.core.k8s:
@@ -49,29 +49,29 @@
   kubernetes.core.k8s_info:
     api_version: kubevirt.io/v1
     kind: VirtualMachine
-    name: "{{ lab_name }}"
-    namespace: "{{ lab_namespace }}"
-  register: deploy_lab_vm
+    name: "{{ collection_name }}"
+    namespace: "{{ collection_namespace }}"
+  register: deploy_collection_vm
   retries: 60
   delay: 10
   until:
-  - deploy_lab_vm.resources[0].status is defined
-  - deploy_lab_vm.resources[0].status.ready is true
+  - deploy_collection_vm.resources[0].status is defined
+  - deploy_collection_vm.resources[0].status.ready is true
 
 - name: Wait for VM IP to be populated
   kubernetes.core.k8s_info:
     api_version: kubevirt.io/v1
     kind: VirtualMachineInstance
-    name: "{{ lab_name }}"
-    namespace: "{{ lab_namespace }}"
-  register: deploy_lab_vmi
+    name: "{{ collection_name }}"
+    namespace: "{{ collection_namespace }}"
+  register: deploy_collection_vmi
   retries: 60
   delay: 10
-  until: (deploy_lab_vmi.resources[0].status.interfaces[0]['ipAddress'] | default('')) | length > 0
+  until: (deploy_collection_vmi.resources[0].status.interfaces[0]['ipAddress'] | default('')) | length > 0
 
 - name: Wait for SSH Connection to be ready
   ansible.builtin.wait_for:
-    host: "{{ deploy_lab_vmi.resources[0].status.interfaces[0]['ipAddress'] }}"
+    host: "{{ deploy_collection_vmi.resources[0].status.interfaces[0]['ipAddress'] }}"
     port: 22
 
 - name: "Create Service"

@@ -2,7 +2,7 @@ configure_aap
 =========
 
 Configurations to prepare Ansible Automation Platform for use managing the assets related to the Ansible Middleware
-OpenShift Virtualization Lab.
+OpenShift Virtualization collection.
 
 Role Variables
 --------------
@@ -25,16 +25,16 @@ Role Variables
 | `aap_inventory_ocpv_name`                        | `OCPV name`                                  | `ocpv`                                                                             |
 | `aap_inventory_ocpv_eap_name`                    | `OCPV EAP name`                              | `eap`                                                                              |
 | `aap_template_deploy_ocp_playbook`               | `path of OCPV install playbook`              | `playbooks/install_ocpv.yml`                                                       |
-| `aap_template_deploy_lab_playbook`               | `path of lab deploy playbook`                | `playbooks/deploy_lab.yml`                                                         |
-| `aap_project_ocpv_name`                          | `OCPV lab name`                              | `ocpv_lab`                                                                         |
-| `aap_project_ocpv_git_url`                       | `OCPV dmeo GitHub url`                       | `https://github.com/ansible-middleware/ocpv_lab.git`                               |
-| `aap_project_ocpv_git_branch`                    | `OCPV lab branch name`                       | `main`                                                                             |
+| `aap_template_deploy_collection_playbook`        | `path of collection deploy playbook`         | `playbooks/deploy_collection.yml`                                                  |
+| `aap_project_ocpv_name`                          | `OCPV collection name`                       | `middleware_ocpv`                                                                  |
+| `aap_project_ocpv_git_url`                       | `OCPV dmeo GitHub url`                       | `https://github.com/redhat-cop/middleware_ocpv.git`                                |
+| `aap_project_ocpv_git_branch`                    | `OCPV collection branch name`                | `main`                                                                             |
 | `automationhub_server_url`                       | `Automation Hub server URL`                  | `https://cloud.redhat.com/api/automation-hub/ `                                    |
 | `automationhub_auth_server_url`                  | `Automation Hub authentication server url`   | `https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token` |
 | `ocpv_ssh_user`                                  | `OCPV ssh username`                          | `cloud-user`                                                                       |
 | `aap_organization`                               | `AAP organization name`                      | `Default`                                                                          |
-| `lab_namespace`                                  | `OCPV lab namespace`                         | `ansible-middleware-ocpv`                                                          |
-| `lab_name`                                       | `deployed lab name`                          | `eap-lab`                                                                          |
+| `collection_namespace`                           | `OCPV collection namespace`                  | `ansible-middleware-ocpv`                                                          |
+| `collection_name`                                | `deployed collection name`                   | `eap-collection`                                                                   |
 
 Dependencies
 ------------
@@ -49,7 +49,7 @@ Example Playbook
 License
 -------
 
-[Apache License Version 2.0](https://github.com/ansible-middleware/ocpv_lab/blob/main/LICENSE)
+[Apache License Version 2.0](https://github.com/redhat-cop/middleware_ocpv/blob/main/LICENSE)
 
 Author Information
 ------------------

@@ -1,37 +1,37 @@
-[![CI](https://github.com/redhat-cop/ocpv_lab/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/redhat-cop/ocpv_lab/actions/workflows/ci.yml) [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8292/badge)](https://www.bestpractices.dev/en/projects/8292)
+[![CI](https://github.com/redhat-cop/middleware_ocpv/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/redhat-cop/middleware_ocpv/actions/workflows/ci.yml) [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8292/badge)](https://www.bestpractices.dev/en/projects/8292)
 
-# Ansible Middleware OpenShift Virtualization Lab
+# Middleware Ansible Middleware OpenShift Virtualization collection
 
 Using OpenShift Virtualization as an environment for hosting Virtual Machines that are provisioned, configured and maintained using Ansible and tooling from the Ansible Middleware project.
 
-## Use case of ocpv_lab
+## Use case of middleware_ocpv collection
 
-The `infra.ocpv_lab` collection demonstrates the use of Ansible automation to manage both the lifecycle of Virtual Machines within an OpenShift Virtualization runtime environment as well as the installation, configuration and management of deployed instances with JBoss Enterprise Application Server (EAP).
+The `infra.middleware_ocpv` collection uses Ansible automation to manage both the lifecycle of Virtual Machines within an OpenShift Virtualization runtime environment as well as the installation, configuration and management of deployed instances with JBoss Enterprise Application Server (EAP).
 
 The integration with OpenShift Virtualization illustrates how Virtual Machines within this dynamic and scalable environment can be managed similarly as other hosting environment and as Red Hat Application Services instances are a common type of workload, the use of Ansible automation showcases just how easy it is to deploy and manage an entire fleet of instances.
 
 ## Environment Requirements
 
-For this lab, the following resources must be available:
+For this collection, the following resources must be available:
 
 * OpenShift Container Platform
     * Capable of running OpenShift Virtualization ([Requirements](https://docs.openshift.com/container-platform/4.12/virt/install/preparing-cluster-for-virt.html#virt-hardware-os-requirements_preparing-cluster-for-virt))
     * `cluster-admin` access
 * Ansible Controller (Part of Ansible Automation Platform) deployed to the same OpenShift environment as OpenShift Virtualization.
-* Control Node capable of provisioning the lab environment
+* Control Node capable of provisioning the collection environment
     * Ansible
 
 ## Prerequisites
 
-Certain requirements must be met prior to realizing the full potential of this lab. This involves not only completing steps within a local machine (control host), but also obtaining assets from external systems.
+Certain requirements must be met prior to realizing the full potential of this collection. This involves not only completing steps within a local machine (control host), but also obtaining assets from external systems.
 
 ### Clone the Repository
 
-Tooling is available within this repository to provision the lab. Clone the repository to your local machine:
+Tooling is available within this repository to provision the collection. Clone the repository to your local machine:
 
 ```shell
-git clone https://github.com/ansible-middleware/ocpv_lab.git
-cd ocpv_lab
+git clone https://github.com/redhat-cop/middleware_ocpv.git
+cd middleware_ocpv
 ```
 
 ### SSH Keypair
@@ -51,7 +51,7 @@ The token must be added to two (2) locations:
 
 ### Red Hat Service Account
 
-A Service Account as the associated Client ID and Client Secret must be provided so that the Runtimes assets can be generated from the Red Hat Customer Portal.
+A Service Account as the associated Client ID and Client Secret must be provided so that the middleware assets can be generated from the Red Hat Customer Portal.
 
 Obtain a Client ID and Client Secret by generating a Service Account [here](https://console.redhat.com/application-services/service-accounts).
 
@@ -63,7 +63,7 @@ The provisioned Virtual Machine will be subscribed so that it can obtain the req
 
 ### Ansible Controller
 
-The provisioning process will configure Ansible Controller to manage the lab. The location of Controller as well as credentials must be specified. Set the `controller_hostname`, `controller_username` and `controller_password` variables in the [vars/provision.yml](vars/provision.yml) file.
+The provisioning process will configure Ansible Controller to manage the collection. The location of Controller as well as credentials must be specified. Set the `controller_hostname`, `controller_username` and `controller_password` variables in the [vars/provision.yml](vars/provision.yml) file.
 
 ### Python Dependencies
 
@@ -81,9 +81,9 @@ Install the required Ansible dependencies by executing the following command fro
 ansible-galaxy collection install -r requirements.yml
 ```
 
-## Provision the lab
+## Provision the collection
 
-Provisioning the lab performs the following actions:
+Provisioning the collection performs the following actions:
 
 * Configures Ansible Controller
     * Custom Credential Types
@@ -93,7 +93,7 @@ Provisioning the lab performs the following actions:
     * Inventory
     * Job Templates
         * Deploy OCPv
-        * Deploy lab
+        * Deploy collection
 
 Ensure that you are logged into the OpenShift environment with a user with `cluster-admin` permissions and execute the following command:
 
@@ -101,13 +101,13 @@ Ensure that you are logged into the OpenShift environment with a user with `clus
 ansible-playbook playbooks/provision.yml
 ```
 
-## Executing the lab
+## Executing the collection
 
 Once the configuration of Ansible Controller has completed successfully, login to Ansible Controller and navigate to the **Templates** tab underneath _Resources_.
 
 Deploy OpenShift Virtualization by selecting the rocketship next to the _Deploy OCPv_ Job Template to install and configure OpenShift Virtualization.
 
-Once OpenShift Virtualization has been installed, execute the lab. The lab provisioning process will perform the following actions:
+Once OpenShift Virtualization has been installed, execute the collection playbook. The collection provisioning process will perform the following actions:
 
 1. Create a new OpenShift namespace called `ansible-middleware-ocpv`.
 2. Create a RHEL 9 based Virtual Machine
@@ -122,12 +122,12 @@ Once the automation has completed successfully, navigate to the `ansible-middlew
 
 Within Administrator perspective, expand the _Networking_ navigation pane on the left-hand side and select **Routes**. 
 
-Select the **eap-lab** route which will open the exposed VM and present the JBoss EAP welcome page.
+Select the **eap-collection** route which will open the exposed VM and present the JBoss EAP welcome page.
 
 Navigate to the `/info` context to view the deployed application.
 
-Enjoy seeing the power of Ansible Middleware setup, configure and automate the deployment of Red Hat Runtimes within the OpenShift Container Platform!
+Enjoy seeing the power of Ansible Middleware setup, configure and automate the deployment of Red Hat middleware within the OpenShift Container Platform!
 
 # License
 
-[Apache License Version 2.0](https://github.com/ansible-middleware/ocpv_lab/blob/main/LICENSE)
+[Apache License Version 2.0](https://github.com/redhat-cop/middleware_ocpv/blob/main/LICENSE)

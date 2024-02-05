@@ -1,5 +1,5 @@
 ===========================================
-infra.ocpv_lab Release Notes
+infra.middleware_ocpv Release Notes
 ===========================================
 
 .. contents:: Topics
@@ -10,4 +10,4 @@ v1.0.0
 Release Summary
 ---------------
 
-This is the first stable release of the ``infra.ocpv_lab`` collection.
+This is the first stable release of the ``infra.middleware_ocpv`` collection.

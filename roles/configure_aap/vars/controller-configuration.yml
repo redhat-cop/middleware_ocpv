@@ -125,9 +125,9 @@ controller_hosts:
       ansible_python_interpreter: "{  { ansible_playbook_python }}"
       k8s_discovered_resources:
         - inventory_group_name: "{{ aap_inventory_ocpv_eap_name }}"
-          namespace: "{{ lab_namespace }}"
+          namespace: "{{ collection_namespace }}"
           label_selectors:
-            - "kubevirt.io/domain={{ lab_name }}"
+            - "kubevirt.io/domain={{ collection_name }}"
 controller_groups:
   - name: "{{ aap_inventory_ocpv_eap_name }}"
     inventory: "{{ aap_inventory_ocpv_name }}"
@@ -141,7 +141,7 @@ controller_templates:
     project: "{{ aap_project_ocpv_name }}"
     playbook: "{{ aap_template_deploy_ocp_playbook }}"
     inventory: "{{ aap_inventory_ocpv_name }}"
-  - name: Deploy lab
+  - name: Deploy collection
     job_type: run
     organization: "{{ aap_organization }}"
     credentials:
@@ -151,7 +151,7 @@ controller_templates:
      - "{{ aap_credential_publickey_name }}"
      - "{{ aap_credential_redhat_csp_name }}"
     project: "{{ aap_project_ocpv_name }}"
-    playbook: "{{ aap_template_deploy_lab_playbook }}"
+    playbook: "{{ aap_template_deploy_collection_playbook }}"
     inventory: "{{ aap_inventory_ocpv_name }}"
     extra_vars:
       eap_archive_dir: /tmp/eap_archive/

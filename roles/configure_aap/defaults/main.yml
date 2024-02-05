@@ -18,11 +18,11 @@ aap_inventory_ocpv_name: ocpv
 aap_inventory_ocpv_eap_name: eap
 
 aap_template_deploy_ocp_playbook: playbooks/install_ocpv.yml
-aap_template_deploy_lab_playbook: playbooks/deploy_lab.yml
+aap_template_deploy_collection_playbook: playbooks/deploy_collection.yml
 
 
-aap_project_ocpv_name: ocpv_lab
-aap_project_ocpv_git_url: https://github.com/ansible-middleware/ocpv_lab.git
+aap_project_ocpv_name: middleware_ocpv
+aap_project_ocpv_git_url: https://github.com/redhat-cop/middleware_ocpv.git
 aap_project_ocpv_git_branch: main
 
 automationhub_server_url: "https://cloud.redhat.com/api/automation-hub/"
@@ -34,5 +34,5 @@ ocpv_ssh_user: cloud-user
 
 aap_organization: Default
 
-lab_namespace: ansible-middleware-ocpv
-lab_name: eap-lab
+collection_namespace: ansible-middleware-ocpv
+collection_name: eap-collection

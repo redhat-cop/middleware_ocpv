@@ -1,5 +1,5 @@
 namespace: infra
-name: ocpv_lab
+name: middleware_ocpv
 version: "1.0.0"
 readme: README.md
 authors:
@@ -15,15 +15,15 @@ tags:
   - application
   - kubernetes
   - openshift
-  - runtimes
+  - middleware
   - middleware
   - a4mw
 dependencies:
   ansible.posix: '>=1.4.0'
   kubernetes.core: '>=2.4.0'
-repository: https://github.com/ansible-middleware/ocpv_lab
-homepage: https://github.com/ansible-middleware/ocpv_lab
-issues: https://github.com/ansible-middleware/ocpv_lab/issues
+repository: https://github.com/redhat-cop/middleware_ocpv
+homepage: https://github.com/redhat-cop/middleware_ocpv
+issues: https://github.com/redhat-cop/middleware_ocpv/issues
 build_ignore:
   - collections
   - .gitignore

@@ -1,11 +1,11 @@
 ---
-- name: Deploy lab
+- name: Deploy collection
   hosts: localhost
   gather_facts: false
   tasks:
     - name: Configure OpenShift
       ansible.builtin.include_role:
-        name: deploy_lab
+        name: deploy_collection
         tasks_from: configure-ocp.yml
 
     - name: K8s Discovery
@@ -17,5 +17,5 @@
   tasks:
     - name: Configure VM
       ansible.builtin.include_role:
-        name: redhat.eap.deploy_lab
+        name: redhat.eap.deploy_collection
         tasks_from: configure-vm.yml

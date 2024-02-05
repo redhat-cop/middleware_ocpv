@@ -1,6 +1,0 @@
----
-- name: Test for deploy_lab role
-  hosts: localhost
-  remote_user: root
-  roles:
-    - deploy_lab

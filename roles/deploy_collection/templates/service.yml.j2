@@ -1,8 +1,8 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ lab_name }}
-  namespace: {{ lab_namespace }}
+  name: {{ collection_name }}
+  namespace: {{ collection_namespace }}
 spec:
   ports:
     - protocol: TCP
@@ -10,4 +10,4 @@ spec:
       targetPort: 8080
   type: ClusterIP
   selector:
-    kubevirt.io/domain: {{ lab_name }}
+    kubevirt.io/domain: {{ collection_name }}
